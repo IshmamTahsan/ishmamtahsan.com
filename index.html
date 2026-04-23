@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইশমাম তাহসান</title>
+   
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #000000;
+            --text-color: #333;
+            --active-green: #27ae60;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* নেভিগেশন বার */
+        .navbar {
+            background-color:  #c4b9b9 !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--active-green) !important;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background-color: var(--active-green);
+        }
+
+        section {
+            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        #home { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        #about { background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); }
+        #work { background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%); }
+        #education { background: linear-gradient(135deg, #f46b45 0%, #eea849 100%); }
+        #experience { background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%); }
+        #dream { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        #achievement { background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%); }
+        #contact { background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); }
+        #feedback { background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%); }
+        #thanks { background: #2c9be6; }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .content-box.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            height: 3px;
+            width: 80px;
+            background: #e74c3c;
+            margin: 20px auto;
+        }
+
+        /* ক্যারোসেলের ছবির জন্য স্টাইল (আসল আকৃতি বজায় থাকবে) */
+        .carousel-item {
+            text-align: center;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .carousel-item img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 450px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img {
+                max-height: 300px;
+            }
+        }
+
+        /* ক্যারোসেল কন্ট্রোল বাটন কালো (আপনার চাহিদা অনুযায়ী) */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black !important;
+            border-radius: 50%;
+            padding: 20px;
+            background-size: 50% 50%;
+        }
+
+        /* তীরের রং সাদা রাখতে */
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        /* All Photos বাটন */
+        .all-photos-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .all-photos-btn:hover {
+            background: #2ecc71;
+            transform: scale(1.02);
+        }
+
+        /* মডালের গ্রিড ছবি */
+        .modal-grid-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .modal-grid-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .card {
+            transition: transform 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            color: #27ae60 !important;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+                min-height: auto;
+            }
+           
+            .content-box {
+                padding: 25px;
+            }
+            
+            .social-icon {
+                font-size: 1.5rem;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- নেভিগেশন বার -->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo" style="height: 60px; margin-right: 15px;">
+            ইশমাম তাহসান
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">হোম</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">পরিচয়</a></li>
+                <li class="nav-item"><a class="nav-link" href="#work">কাজ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">শিক্ষা</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">অভিজ্ঞতা</a></li>
+                <li class="nav-item"><a class="nav-link" href="#dream">স্বপ্ন</a></li>
+                <li class="nav-item"><a class="nav-link" href="#achievement">স্বপ্নপূরণ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">যোগাযোগ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#feedback">মন্তব্য</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- হোম সেকশন -->
+<section id="home" class="d-flex align-items-center">
+    <div class="container">
+        <div class="content-box text-center mx-auto" style="max-width: 800px;">
+            <h1 class="display-4 mb-3">আসসালামু আলাইকুম</h1>
+            <div class="divider mb-3"></div>
+            <p class="lead">আমার ওয়েবসাইটে আপনাকে আন্তরিক শুভেচ্ছা ও স্বাগতম। আশা করি, এখানে আপনি আমার সম্পর্কে ও আমার তৈরি ওয়েবসাইট সম্পর্কে অনেক কিছু জানতে পারবেন।<br><br>মনে রাখবেন, ধৈর্য্য হলো একটি অতুলনীয় শক্তি।</p>
+        </div>
+    </div>
+</section>
+
+<!-- পরিচিতি সেকশন (আসল আকৃতি বজায় রেখে ক্যারোসেল, কন্ট্রোল কালো) -->
+<section id="about">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">আমার পরিচয়</h2>
+            <div class="divider"></div>
+            <div class="row align-items-center">
+                <!-- বাম পাশে: ক্যারোসেল -->
+                <div class="col-md-6">
+                    <div id="profileCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active text-center">
+                                <img src="profile1.jpg" alt="ছবি ১">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img src="profile2.jpg" alt="ছবি ২">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img src="profile3.jpg" alt="ছবি ৩">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img src="profile4.jpg" alt="ছবি ৪">
+                            </div>
+                        </div>
+                        <!-- কন্ট্রোল বাটন (এখন কালো) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#profileCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">পূর্ববর্তী</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#profileCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">পরবর্তী</span>
+                        </button>
+                    </div>
+
+                    <!-- "All Photos" বাটন -->
+                    <div class="text-center mt-3">
+                        <button class="all-photos-btn" data-bs-toggle="modal" data-bs-target="#allPhotosModal">
+                            <i class="fas fa-images me-2"></i> All Photos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ডান পাশে: টেক্সট -->
+                <div class="col-md-6">
+                    <p style="color: #010916; line-height: 1.8; text-align: justify;">
+                        আমি ইশমাম তাহসান। আলহামদুলিল্লাহ, আমি একজন মুসলিম। আমি একজন সাধারণ মানুষ, তবে আমার হৃদয়ে লুকিয়ে আছে এক কোমল ও স্বপ্নবাজ আত্মা। আমার নামের অর্থ—‘কোমল ও সুন্দর মন’। আলহামদুলিল্লাহ, সেই নামের অর্থই যেন প্রতিফলিত হয় আমার চিন্তাভাবনা, ব্যবহার ও জীবনদর্শনে।<br><br>
+                        আমি বিশ্বাস করি, একজন মানুষকে বিশেষ করে তোলে তার মন, মনোভাব ও ব্যবহার। সবসময় চেষ্টা করি নিজের ভেতরের আন্তরিকতা, সম্মান আর মানবিকতা দিয়ে মানুষের পাশে থাকতে। যদিও কখনো কখনো রাগ তীব্র হয়ে ওঠে, তবুও নিজেকে সংযত রাখার চেষ্টায় থাকি—কারণ শান্তিই প্রকৃত শক্তি।<br><br>
+                        আমি একজন স্বপ্নবাজ মানুষ—নতুন কিছু শেখা ও সৃষ্টি করাই আমার প্রতিদিনের অভ্যাস। আমি সবসময় নিজেকে উন্নত করার চেষ্টা করি। নতুন নতুন স্কিল শেখা এবং শিখে ফেলা স্কিলগুলো আরও ভালোভাবে কাজে লাগানো—এটাই আমার প্রতিদিনের চেষ্টার অংশ। আমি বিশ্বাস করি, উন্নতির কোনো শেষ নেই, আর প্রতিটি শেখা আমাকে আরও আত্মবিশ্বাসী ও দক্ষ করে তোলে। আমার বিশ্বাস, এই ছোট ছোট শেখা আর চেষ্টাগুলো একদিন আমাকে বড় স্বপ্নের দ্বারপ্রান্তে পৌঁছে দেবে।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All Photos মডাল -->
+<div class="modal fade" id="allPhotosModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="fas fa-images me-2"></i>সকল ছবি</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                        <img src="profile1.jpg" class="modal-grid-img" alt="ছবি ১">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="profile2.jpg" class="modal-grid-img" alt="ছবি ২">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="profile3.jpg" class="modal-grid-img" alt="ছবি ৩">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="profile4.jpg" class="modal-grid-img" alt="ছবি ৪">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- কাজের সেকশন -->
+<section id="work">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">আমার কাজ</h2>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="project-title-box" style="background: #3498db; padding: 1.5rem; text-align: center;">
+                            <h5 class="project-title" style="color: white; margin:0; font-size:1.4rem;">দৈনন্দিন কাজ</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">প্রতিদিন ভোরে ফজরের নামাজের পর, এক কাপ চায়ের সঙ্গেই শুরু হয় আমার আত্মউন্নয়নের যাত্রা। এক শান্ত পরিবেশে নিজের লক্ষ্য ও পরিকল্পনার দিকে মনোযোগ দিয়ে, দিনটিকে অর্থবহ করে তুলতে চেষ্টা করি। সকাল ৯টায় প্রস্তুত হয়ে চলে যাই ফার্মেসিতে। সেখানে মানুষের সেবা করা শুধু একটি কাজ নয়—এটি আমার জন্য একটি দায়িত্ব, একটি মানবিক প্রয়াস। দিন শেষে রাত ১০টায় বাড়ি ফিরে আসি ক্লান্ত শরীরে, কিন্তু তৃপ্ত মনে। প্রতিটি দিনের অভিজ্ঞতা যেন একটি নতুন অর্জন, একটি নতুন ধাপ আমার স্বপ্নের পথে। রাত ১২টার দিকে ঘুমিয়ে পড়ার আগে মনে হয়—আলহামদুলিল্লাহ, আজও আমি নিজেকে একটু এগিয়ে নিতে পেরেছি।</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="project-title-box" style="background: #3498db; padding: 1.5rem; text-align: center;">
+                            <h5 class="project-title" style="color: white; margin:0; font-size:1.4rem;">ব্যক্তিগত উন্নয়ন</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <ul>
+                                    <li>প্রতিদিন নতুন কিছু শেখার চেষ্টা।</li>
+                                    <li>ওয়েব ডেভেলপমেন্ট ও ডিজিটাল স্কিল চর্চা।</li>
+                                    <li>ট্রেডিং মার্কেটে সময় দেওয়া।</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- শিক্ষা সেকশন -->
+<section id="education">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">শিক্ষাগত যোগ্যতা</h2>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="edu-card" style="background:#fff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); height:100%;">
+                        <h5 style="color:#2c3e50; border-bottom:2px solid #9804ff; padding-bottom:15px;">অনার্স (অর্থনীতি)</h5>
+                        <p class="institute" style="color:#019be0;">কানাইঘাট সরকারি কলেজ</p>
+                        <p class="duration">আসন্ন</p>
+                        <p class="cgpa" style="background:#f8f9fa; padding:8px; border-radius:5px; display:inline-block;">CGPA: আসন্ন</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="edu-card" style="background:#fff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); height:100%;">
+                        <h5 style="color:#2c3e50; border-bottom:2px solid #9804ff; padding-bottom:15px;">এইচএসসি (বিজ্ঞান)</h5>
+                        <p class="institute" style="color:#019be0;">মালিক নাহার মেমোরিয়াল একাডেমি</p>
+                        <p class="duration">২০২২-২০২৩</p>
+                        <p class="cgpa" style="background:#f8f9fa; padding:8px; border-radius:5px; display:inline-block;">GPA: 4.58</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="edu-card" style="background:#fff; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); height:100%;">
+                        <h5 style="color:#2c3e50; border-bottom:2px solid #9804ff; padding-bottom:15px;">এসএসসি (বিজ্ঞান)</h5>
+                        <p class="institute" style="color:#019be0;">সড়কের বাজার উচ্চ বিদ্যালয়</p>
+                        <p class="duration">২০২০-২০২১</p>
+                        <p class="cgpa" style="background:#f8f9fa; padding:8px; border-radius:5px; display:inline-block;">GPA: 4.89</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- অভিজ্ঞতা সেকশন -->
+<section id="experience">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">কাজের অভিজ্ঞতা</h2>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5>নিশাত ফার্মেসী</h5>
+                            <p>বিক্রয়কর্মী (Salesman)</p>
+                            <p>আমি আমাদের দি নিশাত ফার্মেসিতে কাজ করি। যেখানে আমি ফার্মেসি ব্যবস্থাপনা, কাস্টমার সার্ভিস এবং পণ্য পরিচালনার অভিজ্ঞতা অর্জন করে থাকি।</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5>কম্পিউটার প্রশিক্ষণ</h5>
+                            <p>কম্পিউটার অফিস অ্যাপ্লিকেশন</p>
+                            <p>আমি সফলভাবে কম্পিউটার কোর্স শেষ করেছি, যা আমার প্রযুক্তিগত দক্ষতাকে শক্তিশালী করেছে এবং আমাকে বিভিন্ন সফটওয়্যার ব্যবহারে পারদর্শী করেছে।</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5>অনলাইন দক্ষতা</h5>
+                            <p>(আমি ফ্রিল্যান্সার নয়)</p>
+                            <h6>১. ওয়েব ডেভেলপমেন্ট (শিখছি)</h6>
+                            <ul><li>HTML, CSS, JavaScript-এর প্রাথমিক ধারণা।</li><li>ওয়েবসাইট প্ল্যানিং/আইডিয়া ডেভেলপমেন্ট।</li></ul>
+                            <h6>২. ক্রিপ্টোকারেন্সি ট্রেডিং (শিখছি)</h6>
+                            <ul><li>এক্সচেঞ্জ প্ল্যাটফর্ম-এ স্পট ট্রেডিং সম্পর্কে ভালো ধারণা।</li><li>বেসিক ট্রেডিং কৌশল এবং মার্কেট অ্যানালাইসিস।</li></ul>
+                            <h6>৩. গ্রাফিক ডিজাইন</h6>
+                            <ul><li>Canva ব্যবহার করে সোশ্যাল মিডিয়া পোস্ট, লোগো, ব্যানার ইত্যাদি ডিজাইন করা।</li></ul>
+                            <h6>৪. ইন্টারনেট ব্রাউজিং ও তথ্য অনুসন্ধান</h6>
+                            <ul><li>অনলাইন টুল ও AI ব্যবহার করে কাজ করতে সক্ষম।</li></ul>
+                            <h6>৫. অফিস ও কম্পিউটার স্কিল</h6>
+                            <ul><li>Microsoft Word, Excel, PowerPoint-এর বেসিক জ্ঞান।</li><li>বাংলা ও ইংরেজিতে দ্রুত টাইপিং।</li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- স্বপ্ন সেকশন -->
+<section id="dream">
+    <div class="container">
+        <div class="content-box text-center">
+            <h2>আমার স্বপ্ন</h2>
+            <div class="divider"></div>
+            <p style="color: #010916; line-height: 1.8; text-align: justify;">ইনশাআল্লাহ! আমি এমন একটি জীবন গড়ে তুলতে চাই, যা আমার পরিবার, বন্ধু ও সমাজের জন্য উপকারী হবে। আমি বিশ্বাস করি—সফলতা মানে শুধু নিজের জন্য নয়, বরং অন্যের জন্য কিছু করতে পারাও একটি বড় অর্জন। আমি চাই স্বাধীনভাবে কাজ করতে, প্রযুক্তিতে দক্ষ হয়ে নিজের একটি শক্ত অবস্থান তৈরি করতে। স্বপ্ন দেখি এমন একটি ভবিষ্যতের, যেখানে আমি প্রযুক্তির সাহায্যে কাজ করবো নিজের মতো করে—নিজের একটি ব্র্যান্ড গড়ে তুলবো, এবং পরিবারকে দিতে পারবো নিরাপদ ও সুন্দর একটি জীবন। পাশাপাশি, আমি একজন ভ্রমণপ্রেমী মানুষ। এই সুন্দর পৃথিবীর নানা প্রান্ত ঘুরে দেখতে চাই—প্রকৃতির সৌন্দর্য উপভোগ করতে চাই, জানতে চাই মানুষ ও পরিবেশকে নতুনভাবে। আমি বিশ্বাস করি, প্রতিদিনের ছোট ছোট চেষ্টা একদিন আমাকে আমার স্বপ্নের ঠিকানায় পৌঁছে দেবে। তাই আমি থেমে থাকি না—শিখি, ভাবি, গড়ি… আলহামদুলিল্লাহ, আমি স্বপ্ন পথের যাত্রী।</p>
+        </div>
+    </div>
+</section>
+
+<!-- স্বপ্নপূরণ সেকশন -->
+<section id="achievement">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">আমার স্বপ্নপূরণ</h2>
+            <div class="divider"></div>
+            <div class="row text-center">
+                <div class="col-md-12 mb-4">
+                    <p style="color: #010916; line-height: 1.8;">আলহামদুলিল্লাহ! প্রতিদিন নতুন কিছু শিখছি, নিজেকে আরও উন্নত করে গড়ে তুলছি। আল্লাহর উপর ভরসা ও নিজের উপর আত্মবিশ্বাস নিয়ে আমি স্বপ্নপথে এগিয়ে চলেছি। ধাপে ধাপে আমার স্বপ্নগুলো বাস্তবে রূপ নিচ্ছে। সবচেয়ে আনন্দের বিষয়—আলহামদুলিল্লাহ, এখন আমি নিজেই একটি ওয়েবসাইট তৈরি করতে পারি। এই অর্জন শুধু একটি দক্ষতা নয়, বরং আমার স্বপ্নপূরণের পথে একটি দৃঢ় পদক্ষেপ। আমি জানি পথটা সহজ না। মাঝেমধ্যে ক্লান্তি আসে, ভুল হয়, ভয়ও আসে—কিন্তু আমি থেমে থাকি না। আমি বিশ্বাস করি, চেষ্টাই চূড়ান্ত সফলতার চাবিকাঠি। এই যাত্রা চলবে, ইনশাআল্লাহ, আরও দৃঢ়, আরও আত্মবিশ্বাসের সঙ্গে—যেখানে আমি আমার স্বপ্ন, বিশ্বাস ও পরিশ্রমকে একসাথে বয়ে নিয়ে যাব।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- যোগাযোগ সেকশন -->
+<section id="contact">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">যোগাযোগ</h2>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="social-links text-center">
+                        <h5 class="mb-4">সামাজিক মাধ্যম ও যোগাযোগ</h5>
+                        <a href="https://www.facebook.com/share/1EQhQcygb8/" class="btn btn-outline-primary m-2" target="_blank"><i class="fab fa-facebook"></i> ফেসবুক</a>
+                        <a href="https://wa.me/+8801741100777" class="btn btn-outline-primary m-2" target="_blank"><i class="fab fa-whatsapp"></i> ওয়াটসঅ্যাপ</a>
+                        <a href="https://t.me/Ishmamtahsan" class="btn btn-outline-primary m-2" target="_blank"><i class="fab fa-telegram"></i> টেলিগ্রাম</a>
+                        <a href="mailto:ishmamtahsan01.email@gmail.com?subject=(বিষয়লেখেন)&body=প্রিয়%20ইশমাম,%0D%0A%0D%0Aআমার%20নাম%20(আপনার%20নাম)%20...%0D%0A%0D%0Aধন্যবাদান্তে,%0D%0A(আপনার%20নাম)" class="btn btn-outline-primary m-2"><i class="fas fa-envelope"></i> ইমেইল</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ফিডব্যাক সেকশন (Google Forms) -->
+<section id="feedback">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">ওয়েবসাইট সম্পর্কে আপনার মতামত</h2>
+            <div class="divider"></div>
+            <div style="height: 600px; width: 100%; overflow: hidden">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf-cM2fibUOKMx4SxqZx6UoxgimUyEl8Rv-oTnovDaON_dMPw/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" style="border: none;">লোড হচ্ছে...</iframe>
+            </div>
+        </div>
+    </div>   
+</section>
+
+<!-- ধন্যবাদ সেকশন -->
+<section id="thanks">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center">ধন্যবাদ</h2>
+            <div class="divider"></div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h4 class="text-muted mt-3">আপনার মূল্যবান সময় দেওয়ার জন্য অসংখ্য ধন্যবাদ</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ফুটার -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            <p class="mb-0">&copy; ২০২৬ ইশমাম তাহসান। সর্বস্বত্ব সংরক্ষিত।</p>
+            <p class="mb-0 mt-2">ডিজাইন ও উন্নয়ন: ইশমাম তাহসান</p>
+        </div>
+    </div>
+</footer>
+
+<!-- লাইটবক্স মডাল -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <img src="" id="modalImage" class="img-fluid w-100" alt="বড় ছবি">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- স্ক্রিপ্ট -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // অ্যানিমেশন
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.content-box').forEach((box) => {
+        observer.observe(box);
+    });
+
+    // মোবাইল মেনু ক্লোজ
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbar = document.getElementById('navbarNav');
+    const bsCollapse = new bootstrap.Collapse(navbar, {toggle: false});
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 992) {
+                bsCollapse.hide();
+            }
+        });
+    });
+
+    // লাইটবক্স: সব ছবি ক্লিক করলে বড় করে দেখানো
+    document.querySelectorAll('.modal-grid-img, .carousel-item img').forEach(img => {
+        img.addEventListener('click', function() {
+            document.getElementById('modalImage').src = this.src;
+            new bootstrap.Modal(document.getElementById('imageModal')).show();
+        });
+    });
+
+    // অ্যাক্টিভ মেনু আপডেট
+    window.addEventListener('scroll', function() {
+        let sections = document.querySelectorAll('section');
+        let navLinks = document.querySelectorAll('.nav-link');
+        
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 150;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if(top >= offset && top < offset + height) {
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                    if(links.getAttribute('href') === `#${id}`) {
+                        links.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // স্মুথ স্ক্রলিং
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // নেভবার স্ক্রোল ইফেক্ট
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.background = window.scrollY > 50 ? 'rgba(237, 197, 197, 0.98)' : '#c4b9b9';
+    });
+});
+</script>
+
+</body>
+</html>
